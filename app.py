@@ -12,11 +12,10 @@ db = mysql.connect(
 
 @app.route('/')
 def index():
-    cursor = db.cursor(dictionary=True) 
-    
-    
+    cursor = db.cursor(dictionary=True)
     cursor.execute("SELECT * FROM table_name")
     data = cursor.fetchall()
+    cursor.close()
 
 @app.route('/')
 def index():
