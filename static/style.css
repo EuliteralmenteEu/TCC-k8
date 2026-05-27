@@ -1,5 +1,4 @@
 html, body {
-    
     height: 100%;
     margin: 0;
     
@@ -8,28 +7,42 @@ html, body {
 #container {
     display: flex;
     height: 100vh;
+
 }
 
 #carrossel {
     width: 70%;
+    
+
 }
 
 #carrossel img {
     height: 100vh;
     object-fit: cover;
 }
-
+#carrossel::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 61%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    pointer-events: none;
+}
 
 #corpo {
-    background: linear-gradient(135deg, #192a6b, #87bbccbd);
+    background: linear-gradient( 45deg, #365AEB, #192a6b, #101B47);
     width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 #login-box {
+    font-family: "Courier New", Courier, monospace;
     color: #d68b01;
     width: 300px;
+
 }
 
 #login-box h2 {
@@ -53,6 +66,8 @@ html, body {
 
 #logo {
     display: block;
-    margin: 0 auto 20px;
-    width: 300px;
+    position: relative;
+    right: 40px;
+    margin: 0 auto 20px;    
+    width: 350px;
 }
