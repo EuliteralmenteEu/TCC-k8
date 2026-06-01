@@ -1,34 +1,31 @@
 from flask import Flask, render_template
-import pymysql
+import mysql.connector as mysql
 
 app = Flask(__name__)
 
-
-def get_db_connection():
-    return pymysql.connect(
-        host='localhost',
-        user='your_username',
-        password='your_password',
-        db='your_db',
-        charset='utf8mb4',
-        cursorclass=pymysql.cursors.DictCursor
-    )
+db = mysql.connect(
+    host="localhost",
+    user="username",
+    password="password",
+    database="name"
+)
 
 @app.route('/')
 def index():
-    connection = get_db_connection()
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT VERSION()")
-            db_version = cursor.fetchone()
-    finally:
-        connection.close()
-        
-    return render_template('index.html', version=db_version)
+    cursor = db.cursor(dictionary=True) 
+    
+    
+    cursor.execute("SELECT * FROM table_name")
+    data = cursor.fetchall()
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/estoque')
+def estoque():
+    return render_template('estoque.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
 
