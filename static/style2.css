@@ -1,13 +1,13 @@
 body {
-    background-color: #ffffff;
+    background-color: #f4f6f9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.navbar {
+#navbar {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 }
 
-.navbar-brand {
+#navbar-title {
     font-weight: bold;
     font-size: 1.3rem;
 }
@@ -17,7 +17,7 @@ body {
     margin: 50px auto;
 }
 
-.card-custom {
+#card {
     padding: 25px;
     border-radius: 20px;
     background: white;
@@ -25,7 +25,7 @@ body {
     transition: 0.3s;
 }
 
-.card-custom:hover {
+#card:hover {
     transform: scale(1.01);
 }
 
@@ -34,33 +34,22 @@ body {
     overflow: hidden;
 }
 
-th {
-    background-color: #0d6efd !important;
+#tabela th {
+    background-color: #0d6efd;
     color: white;
     text-align: center;
-    font-weight: 500;
 }
 
-td {
+#tabela td {
     text-align: center;
     vertical-align: middle;
 }
 
-
-tr:hover {
+#tabela tr:hover {
     background-color: #eef1f5;
-    transition: 0.2s;
 }
 
-h3 {
+#titulo {
     font-weight: bold;
-}
-
-.btn {
-    border-radius: 10px;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
+    text-align: center;
 }
