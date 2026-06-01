@@ -7,28 +7,37 @@ load_dotenv()
 
 app = Flask(__name__)
 
+
 def get_db_connection():
     return mysql.connect(
-        host=os.getenv('DB_HOST', 'localhost'),
-        user=os.getenv('DB_USER', 'username'),
-        password=os.getenv('DB_PASSWORD', 'password'),
-        database=os.getenv('DB_NAME', 'almoxarifado')
+        host=os.getenv("DB_HOST", "localhost"),
+        user=os.getenv("DB_USER", "username"),
+        password=os.getenv("DB_PASSWORD", "password"),
+        database=os.getenv("DB_NAME", "almoxarifado"),
     )
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    connection = get_db_connection()
+    connection = None
+    data = []
     try:
+        connection = get_db_connection()
         cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM table_name")
+        cursor.execute("SELECT * FROM actual_table_name")
         data = cursor.fetchall()
         cursor.close()
+    except Exception as e:
+        print(f"Database error: {e}")
+        data = []
     finally:
-        connection.close()
-    
-    return render_template('index.html', data=data)
+        if connection:
+            connection.close()
 
-@app.route('/estoque')
+    return render_template("index.html", data=data)
+
+
+@app.route("/estoque")
 def estoque():
     connection = get_db_connection()
     try:
@@ -38,8 +47,9 @@ def estoque():
         cursor.close()
     finally:
         connection.close()
-    
-    return render_template('estoque.html', data=data)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template("estoque.html", data=data)
+
+
+if __name__ == "__main__":
+    app.run(debug=os.getenv("FLASK_DEBUG", "false") == "true")
