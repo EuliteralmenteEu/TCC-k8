@@ -26,7 +26,7 @@ def get_db_connection():
             database=os.getenv("DB_NAME", "almoxarifado"),
             autocommit=True,
             connection_timeout=10
-        )
+        )  
         return connection
     except Error as e:
         logger.error(f"Database connection failed: {e}")
@@ -40,7 +40,7 @@ def index():
     """
     connection = None
     data = []
-    error_msg = None  # Variável para armazenar o erro, se houver
+    error_msg = None  
 
     try:
         connection = get_db_connection()
@@ -49,7 +49,7 @@ def index():
             error_msg = "Database falhou em se conectar"
         else:
             cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM items")
+            cursor.execute("SELECT * FROM almoxarifado")
             data = cursor.fetchall()
             cursor.close()
             
@@ -62,7 +62,6 @@ def index():
         if connection and connection.is_connected():
             connection.close()
 
-    # Um único ponto de saída para a rota
     return render_template("index.html", data=data, error=error_msg)
 
 
@@ -73,26 +72,27 @@ def estoque():
     """
     connection = None
     data = []
+    error_msg = None  # Add this
+    
     try:
         connection = get_db_connection()
         if connection is None:
             logger.warning("Estoque: falhou na conexão")
-            return render_template("estoque.html", data=data, error="Database falhu na conexão")
-        
-        cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM estoque")
-        data = cursor.fetchall()
-        cursor.close()
+            error_msg = "Database falhou na conexão"
+        else:
+            cursor = connection.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM estoque")
+            data = cursor.fetchall()
+            cursor.close()
     except Error as e:
         logger.error(f"Estoque - Database error: {e}")
         data = []
-        return render_template("estoque.html", data=data, error="Failed to retrieve inventory data")
+        error_msg = "Failed to retrieve inventory data"
     finally:
         if connection and connection.is_connected():
             connection.close()
 
-    return render_template("estoque.html", data=data)
-
+    return render_template("estoque.html", data=data, error=error_msg)
 
 if __name__ == "__main__":
     app.run(
