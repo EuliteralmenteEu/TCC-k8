@@ -40,26 +40,30 @@ def index():
     """
     connection = None
     data = []
+    error_msg = None  # Variável para armazenar o erro, se houver
+
     try:
         connection = get_db_connection()
         if connection is None:
             logger.warning("Index: conexão invalida")
-            return render_template("index.html", data=data, error="Database falhou em se conectar")
-        
-        cursor = connection.cursor(dictionary=True)
-      
-        cursor.execute("SELECT * FROM items")
-        data = cursor.fetchall()
-        cursor.close()
+            error_msg = "Database falhou em se conectar"
+        else:
+            cursor = connection.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM items")
+            data = cursor.fetchall()
+            cursor.close()
+            
     except Error as e:
         logger.error(f"Index - Database error: {e}")
         data = []
-        return render_template("index.html", data=data, error="Failed to retrieve data")
+        error_msg = "Failed to retrieve data"
+        
     finally:
         if connection and connection.is_connected():
             connection.close()
 
-    return render_template("index.html", data=data)
+    # Um único ponto de saída para a rota
+    return render_template("index.html", data=data, error=error_msg)
 
 
 @app.route("/estoque")
