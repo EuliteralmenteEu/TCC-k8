@@ -16,8 +16,7 @@ logger = logging.getLogger(__name__)
 
 def get_db_connection():
     """
-    Establish a database connection with error handling.
-    Returns a connection object or None if connection fails.
+    Estabelece uma conexão com o database, se estabelecer ele mostrará o objeto, se falhar vai mostrar uma mensagem de erro
     """
     try:
         connection = mysql.connect(
@@ -37,15 +36,15 @@ def get_db_connection():
 @app.route("/")
 def index():
     """
-    Index route - displays data from the database.
+    Index route - mostra coisas do database.
     """
     connection = None
     data = []
     try:
         connection = get_db_connection()
         if connection is None:
-            logger.warning("Index: Database connection unavailable")
-            return render_template("index.html", data=data, error="Database connection failed")
+            logger.warning("Index: conexão invalida")
+            return render_template("index.html", data=data, error="Database falhou em se conectar")
         
         cursor = connection.cursor(dictionary=True)
       
@@ -66,15 +65,15 @@ def index():
 @app.route("/estoque")
 def estoque():
     """
-    Estoque route - displays inventory data.
+    Estoque route - mostra os dados do inventario
     """
     connection = None
     data = []
     try:
         connection = get_db_connection()
         if connection is None:
-            logger.warning("Estoque: Database connection unavailable")
-            return render_template("estoque.html", data=data, error="Database connection failed")
+            logger.warning("Estoque: falhou na conexão")
+            return render_template("estoque.html", data=data, error="Database falhu na conexão")
         
         cursor = connection.cursor(dictionary=True)
         cursor.execute("SELECT * FROM estoque")
@@ -89,19 +88,6 @@ def estoque():
             connection.close()
 
     return render_template("estoque.html", data=data)
-
-
-@app.errorhandler(404)
-def not_found(error):
-    """Handle 404 errors."""
-    return render_template("404.html"), 404
-
-
-@app.errorhandler(500)
-def server_error(error):
-    """Handle 500 errors."""
-    logger.error(f"Server error: {error}")
-    return render_template("500.html"), 500
 
 
 if __name__ == "__main__":
