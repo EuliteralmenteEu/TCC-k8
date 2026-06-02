@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import mysql.connector as mysql
 from mysql.connector import Error
 import os
@@ -36,33 +36,17 @@ def get_db_connection():
 @app.route("/")
 def index():
     """
-    Index route - mostra coisas do database.
+    Index route - redirects to cadastrar page
     """
-    connection = None
-    data = []
-    error_msg = None  
+    return redirect(url_for("cadastrar"))
 
-    try:
-        connection = get_db_connection()
-        if connection is None:
-            logger.warning("Index: conexão invalida")
-            error_msg = "Database falhou em se conectar"
-        else:
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM almoxarifado")
-            data = cursor.fetchall()
-            cursor.close()
-            
-    except Error as e:
-        logger.error(f"Index - Database error: {e}")
-        data = []
-        error_msg = "Failed to retrieve data"
-        
-    finally:
-        if connection and connection.is_connected():
-            connection.close()
 
-    return render_template("index.html", data=data, error=error_msg)
+@app.route("/cadastrar")
+def cadastrar():
+    """
+    Cadastrar route - main screen for registration
+    """
+    return render_template("cadastrar.html")
 
 
 @app.route("/estoque")
