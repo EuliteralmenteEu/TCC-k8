@@ -10,9 +10,6 @@ CREATE TABLE estoque(
     PRIMARY KEY (`id`)
 	);
 
-CREATE DATABASE login;
-USE login;
-
 CREATE TABLE usuarios (
 	email VARCHAR(48) NOT NULL,
     senha VARCHAR(32) NOT NULL,
