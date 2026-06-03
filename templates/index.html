@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,15 +19,15 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active" data-bs-interval="3000">
-                    <img src="../static/robotista.jpg" class="d-block w-100" alt="Imagem de robótica">
+                    <img src="../static/robotista.jpg" class="d-block w-100">
                 </div>
 
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="../static/eletronica2.jpg" class="d-block w-100" alt="Imagem de eletrônica">
+                    <img src="../static/eletronica2.jpg" class="d-block w-100">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="../static/cursos-tecnicos.jpg" class="d-block w-100" alt="Imagem de cursos técnicos">
+                    <img src="../static/cursos-tecnicos.jpg" class="d-block w-100">
                 </div>
 
             </div>
@@ -40,30 +39,30 @@
 
         <form id="login-box">
 
-            <img src="../static/senai2.png" id="logo" alt="Logo SENAI">
+            <img src="../static/senai2.png" id="logo">
 
             <div class="mb-3">
-                <label for="matricula">Matrícula:</label>
-                <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Digite sua matrícula" required>
+                <label>Matrícula:</label>
+                <input type="text" class="form-control" placeholder="Digite sua matrícula" required>
             </div>
 
             <div class="mb-3">
-                <label for="email">E-mail:</label>
+                <label>E-mail:</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="Digite seu E-mail" required>
             </div>
 
             <div class="mb-3">
-                <label for="password">Senha:</label>
+                <label>Senha:</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Digite sua Senha" required>
             </div>
 
             <!-- BOTÕES USUÁRIO / ADMIN -->
             <div id="botao_usu_adm">
 
-                <input type="radio" class="btn-check" name="tipo" id="usuario" value="usuario" checked>
+                <input type="radio" class="btn-check" name="tipo" id="usuario" checked>
                 <label class="btn btn-secondary" for="usuario">Usuário</label>
 
-                <input type="radio" class="btn-check" name="tipo" id="admin" value="admin">
+                <input type="radio" class="btn-check" name="tipo" id="admin">
                 <label class="btn btn-secondary" for="admin">Admin</label>
 
             </div>
@@ -76,12 +75,12 @@
             </button>
 
             <p style="text-align: center;">
-                <br> Cadastrar Usuário?
+                <br> Cadastrar Usuario?
             </p>
 
             <!-- CADASTRO -->
             <button id="cadastrar"
-                    onclick="window.location.href='/cadastrar'"
+                    onclick="window.location.href='cadastrar.html'"
                     type="button"
                     class="btn btn-success w-100"
                     disabled>
@@ -114,17 +113,15 @@ usuario.addEventListener("change", () => {
 
 // LOGIN (FLASK API)
 async function login() {
-    const matricula = document.getElementById("matricula").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const tipo = document.querySelector('input[name="tipo"]:checked').value;
 
     const response = await fetch("/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ matricula, email, password, tipo })
+        body: JSON.stringify({ email, password })
     });
 
     const data = await response.json();
