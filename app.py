@@ -1,3 +1,4 @@
+#os imports necessarios
 from flask import Flask, render_template, redirect, url_for, request, jsonify, session
 import mysql.connector as mysql
 from mysql.connector import Error
@@ -6,6 +7,7 @@ from dotenv import load_dotenv
 import logging
 from datetime import timedelta
 
+#configuração basica da WEB
 load_dotenv()
 
 app = Flask(__name__, template_folder='template')
@@ -15,7 +17,7 @@ app.permanent_session_lifetime = timedelta(hours=24)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
+#configuração base do DB
 def get_db_connection():
     """
     Estabelece uma conexão com o database, se estabelecer ele mostrará o objeto, se falhar vai mostrar uma mensagem de erro
@@ -34,7 +36,7 @@ def get_db_connection():
         logger.error(f"Database connection failed: {e}")
         return None
 
-
+#ROTAS para paginas
 @app.route("/")
 def index():
     """
@@ -52,7 +54,7 @@ def cadastrar():
     """
     return render_template("cadastrar.html")
 
-
+#parte chata terrivel que não funciona 
 @app.route("/api/login", methods=["POST"])
 def login():
     """
@@ -92,7 +94,7 @@ def login():
 @app.route("/api/register", methods=["POST"])
 def register():
     """
-    API endpoint for user registration
+    API endpoint bleh
     """
     try:
         data = request.get_json()
@@ -111,7 +113,7 @@ def register():
         try:
             cursor.execute(
                 "INSERT INTO usuarios (email, senha, permisao) VALUES (%s, %s, %s)",
-                (email, password, 0)  # 0 = regular user
+                (email, password, 0)  # comentario irado
             )
             cursor.close()
             connection.close()
@@ -123,9 +125,8 @@ def register():
             
     except Exception as e:
         logger.error(f"Register error: {e}")
-        return jsonify({"error": "Server error"}), 500
-
-
+        return jsonify({"error": "Server error"}), 500 
+#Sla como explicar essa parte sendo bem sincero
 @app.route("/logout")
 def logout():
     """
@@ -208,7 +209,11 @@ if __name__ == "__main__":
     app.run(
         debug=os.getenv("FLASK_DEBUG", "false").lower() == "true",
         host=os.getenv("FLASK_HOST", "127.0.0.1"),
+
+        
         port=int(os.getenv("FLASK_PORT", "5000"))
     )
+
+#TOME CUIDADO, ALGUMAS ÁREAS PODEM QUEBRAR TUDO
 
 
