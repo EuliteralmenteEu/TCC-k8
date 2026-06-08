@@ -31,6 +31,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 
@@ -43,45 +44,77 @@
 
             <div class="mb-3">
                 <label>Matrícula:</label>
-                <input type="text" class="form-control" placeholder="Digite sua matrícula" required>
+                <input type="text"
+                       id="matricula"
+                       name="matricula"
+                       class="form-control"
+                       placeholder="Digite sua matrícula"
+                       required>
             </div>
 
             <div class="mb-3">
                 <label>E-mail:</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Digite seu E-mail" required>
+                <input type="email"
+                       name="email"
+                       id="email"
+                       class="form-control"
+                       placeholder="Digite seu E-mail"
+                       required>
             </div>
 
             <div class="mb-3">
                 <label>Senha:</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Digite sua Senha" required>
+                <input type="password"
+                       name="password"
+                       id="password"
+                       class="form-control"
+                       placeholder="Digite sua Senha"
+                       required>
             </div>
 
-            <!-- BOTÕES USUÁRIO / ADMIN -->
+            <!-- USUÁRIO / ADMIN -->
             <div id="botao_usu_adm">
 
-                <input type="radio" class="btn-check" name="tipo" id="usuario" checked>
-                <label class="btn btn-secondary" for="usuario">Usuário</label>
+                <input type="radio"
+                       class="btn-check"
+                       name="tipo"
+                       id="usuario"
+                       value="usuario"
+                       checked>
 
-                <input type="radio" class="btn-check" name="tipo" id="admin">
-                <label class="btn btn-secondary" for="admin">Admin</label>
+                <label class="btn btn-secondary" for="usuario">
+                    Usuário
+                </label>
+
+                <input type="radio"
+                       class="btn-check"
+                       name="tipo"
+                       id="admin"
+                       value="admin">
+
+                <label class="btn btn-secondary" for="admin">
+                    Admin
+                </label>
 
             </div>
 
             <br>
 
-            <!-- LOGIN (FLASK API) -->
-           <button type="button" onclick="login()" class="btn btn-primary w-100 mb-2">
+            <!-- LOGIN -->
+            <button type="button"
+                    onclick="login()"
+                    class="btn btn-primary w-100 mb-2">
                 Entrar
             </button>
 
             <p style="text-align: center;">
-                <br> Cadastrar Usuario?
+                <br> Cadastrar Usuário?
             </p>
 
             <!-- CADASTRO -->
             <button id="cadastrar"
-                    onclick="cadastrar()"
                     type="button"
+                    onclick="cadastrar()"
                     class="btn btn-success w-100"
                     disabled>
                 Cadastrar
@@ -97,39 +130,71 @@
 <script>
 const usuario = document.getElementById("usuario");
 const admin = document.getElementById("admin");
-const cadastrar = document.getElementById("cadastrar");
+const cadastrarBtn = document.getElementById("cadastrar");
 
-// começa bloqueado
-cadastrar.disabled = true;
+// inicia bloqueado
+cadastrarBtn.disabled = true;
 
-// libera ou bloqueia botão
+// libera cadastro só no admin
 admin.addEventListener("change", () => {
-    cadastrar.disabled = false;
+    cadastrarBtn.disabled = !admin.checked;
 });
 
+// bloqueia no usuário
 usuario.addEventListener("change", () => {
-    cadastrar.disabled = true;
+    cadastrarBtn.disabled = usuario.checked;
 });
 
-// LOGIN (FLASK API)
+// redireciona cadastro
+function cadastrar() {
+    window.location.href = "/cadastro";
+}
+
+// login
 async function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
 
-    const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-    });
+    const matricula = document.getElementById("matricula").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const tipo = document.querySelector('input[name="tipo"]:checked').value;
 
-    const data = await response.json();
+    if (!matricula || !email || !password) {
+        alert("Preencha todos os campos.");
+        return;
+    }
 
-    if (data.success) {
-        window.location.href = "/estoque";
-    } else {
-        alert(data.error);
+    try {
+
+        const response = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                matricula,
+                email,
+                password,
+                tipo
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            if (data.tipo === "admin") {
+                window.location.href = "/admin";
+            } else {
+                window.location.href = "/estoque";
+            }
+
+        } else {
+            alert(data.error || "Login inválido.");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao conectar com o servidor.");
     }
 }
 </script>
