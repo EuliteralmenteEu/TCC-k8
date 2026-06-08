@@ -166,7 +166,7 @@ def estoque():
         if connection and connection.is_connected():
             connection.close()
 
-    return render_template("estoque.html", data=data, error=error_msg, email=session.get('email'))
+    return render_template("estoque.html", data=data, error=error_msg, email=session.get('email'), permisao=session.get('permisao'))
 
 
 @app.route("/api/item", methods=["POST"])
