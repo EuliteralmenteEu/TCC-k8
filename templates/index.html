@@ -12,7 +12,6 @@
 
 <div id="container">
 
-    <!-- CARROSSEL -->
     <div id="carrossel">
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 
@@ -35,7 +34,6 @@
         </div>
     </div>
 
-    <!-- LOGIN -->
     <div id="corpo">
 
         <form id="login-box">
@@ -72,7 +70,6 @@
                        required>
             </div>
 
-            <!-- USUÁRIO / ADMIN -->
             <div id="botao_usu_adm">
 
                 <input type="radio"
@@ -100,7 +97,6 @@
 
             <br>
 
-            <!-- LOGIN -->
             <button type="button"
                     onclick="login()"
                     class="btn btn-primary w-100 mb-2">
@@ -111,7 +107,6 @@
                 <br> Cadastrar Usuário?
             </p>
 
-            <!-- CADASTRO -->
             <button id="cadastrar"
                     type="button"
                     onclick="cadastrar()"
@@ -126,31 +121,25 @@
 
 </div>
 
-<!-- SCRIPT -->
 <script>
 const usuario = document.getElementById("usuario");
 const admin = document.getElementById("admin");
 const cadastrarBtn = document.getElementById("cadastrar");
 
-// inicia bloqueado
 cadastrarBtn.disabled = true;
 
-// libera cadastro só no admin
 admin.addEventListener("change", () => {
     cadastrarBtn.disabled = !admin.checked;
 });
 
-// bloqueia no usuário
 usuario.addEventListener("change", () => {
     cadastrarBtn.disabled = usuario.checked;
 });
 
-// redireciona cadastro
 function cadastrar() {
     window.location.href = "/cadastro";
 }
 
-// login
 async function login() {
 
     const matricula = document.getElementById("matricula").value.trim();
