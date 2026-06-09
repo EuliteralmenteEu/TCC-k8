@@ -116,11 +116,11 @@ const cadastrarBtn = document.getElementById ("cadastrar");
 cadastrarBtn.disabled = true;
 
 admin.addEventListener("change", () => {
-    cadastrarBtn.disabled = !admin.checked;
+        cadastrarBtn.disabled = !admin.checked;
 });
 
 usuario.addEventListener("change", () => {
-    cadastrarBtn.disabled = usuario.checked;
+        cadastrarBtn.disabled = usuario.checked;
 });
 
 function cadastrar() {
@@ -165,7 +165,7 @@ async function login() {
             }
 
         } else {
-            alert(data.error || "Login inválido.");
+            alert (data.error || "Login inválido.");
         }
 
     } catch (error) {
