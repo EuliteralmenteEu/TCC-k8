@@ -1,16 +1,14 @@
 CREATE DATABASE IF NOT EXISTS almoxarifado;
 USE almoxarifado;
 
--- Tabela de Usuários
 CREATE TABLE IF NOT EXISTS usuarios (
     email VARCHAR(100) NOT NULL,
     nome VARCHAR(100) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    permisao INT DEFAULT 0, -- 0 = Usuário comum, 1 = Administrador
+    permisao INT DEFAULT 0,
     PRIMARY KEY (email)
 );
 
--- Tabela de Estoque
 CREATE TABLE IF NOT EXISTS estoque (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -19,7 +17,6 @@ CREATE TABLE IF NOT EXISTS estoque (
     descricao VARCHAR(255)
 );
 
--- Tabela de Histórico de Movimentações
 CREATE TABLE IF NOT EXISTS historico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_email VARCHAR(100) NOT NULL,
@@ -30,8 +27,6 @@ CREATE TABLE IF NOT EXISTS historico (
     FOREIGN KEY (usuario_email) REFERENCES usuarios (email) ON DELETE CASCADE
 );
 
--- Usuário Administrador Inicial (Senha padrão: admin123)
--- Inserido com hash PBKDF2 correspondente para login seguro
 INSERT INTO usuarios (email, nome, senha, permisao) 
 VALUES (
     'admin@gmail.com', 
