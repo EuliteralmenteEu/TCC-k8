@@ -28,10 +28,4 @@ CREATE TABLE IF NOT EXISTS historico (
 );
 
 INSERT INTO usuarios (email, nome, senha, permisao) 
-VALUES (
-    'admin@gmail.com', 
-    'Administrador', 
-    'scrypt:32768:8:1$pGpxfV1c3Ztqf7fT$4f40f2f01fbeea3336ee3bb66fb2dc41bb925d487299a9a3b6329ef312ccbcf81987d605151528652d8e4f16b2b516b2518be574fe328de3e49e0c51086c8f9c', 
-    1
-)
-ON DUPLICATE KEY UPDATE email=email;
+
