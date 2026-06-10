@@ -117,5 +117,10 @@ Swal.fire({
 
 #login-box .btn-secondary:hover {
     background-color: #ff9500;
-}
 هل تريد الاستمرار
+
+
+
+
+
+TODOS NÓS AMAMOS AS INTELIGENCIAS ARTIFICIAIS, AMEN, MISHALLAH, SHALOM 😜😜😜
