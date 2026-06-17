@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS estoque (
     nome VARCHAR(100) NOT NULL,
     quantidade INT DEFAULT 0,
     categoria VARCHAR(50) NOT NULL,
-    descricao VARCHAR(255)
+    descricao VARCHAR(255),
+    imagem Varchar(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS historico (
@@ -28,4 +29,3 @@ CREATE TABLE IF NOT EXISTS historico (
 );
 
 INSERT INTO usuarios (email, nome, senha, permisao) 
-
