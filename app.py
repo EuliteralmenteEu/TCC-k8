@@ -1,8 +1,11 @@
 from flask import Flask, render_template, g
 import mysql.connector 
 import os
+import logging
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 #----------SQL------------------
 DB_HOST = os.getenv('DB_HOST','localhost')
@@ -27,7 +30,6 @@ def close_db(e):
     db = g.pop('db', None)
     if db is not None:
         db.close()
-
 #--------------FIM DO SQL--------------------
 
 @app.route("/")
