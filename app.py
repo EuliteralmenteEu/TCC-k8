@@ -32,7 +32,7 @@ def close_db(e):
 
 @app.route("/")
 def index():
-    return "WAAAAAAH"
+    return render_template("Index.html")
 
 
 if __name__ == "__main__":
