@@ -31,9 +31,9 @@ def close_db(e):
 #--------------FIM DO SQL--------------------
 
 @app.route("/")
-def home():
+def index():
     return "WAAAAAAH"
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True host=0.0.0.0, port=3000)
