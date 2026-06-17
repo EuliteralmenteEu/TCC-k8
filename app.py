@@ -1,14 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, g
 import mysql.connector 
 import os
 
 app = Flask(__name__)
 
 #----------SQL------------------
-DB_HOST = 'localhost'
-DB_USER = 'seu_usuario'
-DB_PASSWORD = 'sua_senha'
-DB_DATABASE = 'seu_banco'
+DB_HOST = os.getenv('DB_HOST','localhost')
+DB_USER = os.getenv('DB_USER','seu_usuario')
+DB_PASSWORD = os.getenv('DB_PASSWORD','sua_senha')
+DB_DATABASE = os.getenv('DB_DATABASE','seu_banco')
 
 def get_db():
     """Abre uma conexão com o banco de dados se já não houver uma ativa na requisição."""
