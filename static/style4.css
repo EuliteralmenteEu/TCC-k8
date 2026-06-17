@@ -1,9 +1,12 @@
+@import url('https://googleapis.com');
+
 body {
+    background-color: #101B47;
     background-image: url("instituto_senai_de_tecnologia_mt_cover.png");
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    font-family: OCR A Std, monospace
+    font-family: 'Google Sans', sans-serif;
 }
 
 body::before {
@@ -116,4 +119,8 @@ body::before {
     color: #35437A;
     font-weight: bold;
     text-align: center;
+}
+
+#tituloEstoque {
+    color: #ffffff;
 }
