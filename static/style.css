@@ -27,19 +27,53 @@ body {
 }
 
 #corpo{
+    position: absolute;
+    left: 54.4%;
+    top: 0%;
     width: 100%;
-    max-width: 420px;
+    max-width: 45.5%;
     padding: 2.5rem;
-    transition: var(--transition-smooth);
-    animation: fadeInUp 0.6s ease;
-    background-color: var(--bg-app);
-    background-image: 
-    radial-gradient(at 0% 0%, rgba(0, 84, 166, 0.18) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(227, 28, 25, 0.1) 0px, transparent 50%);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
+    background-color: #192a6b;
     min-height: 100vh;
     overflow-x: hidden;
+}
+#login-box {
+
+    font-family: "Courier New", Courier, monospace;
+    color: #ff9500;
+    width: 300px;
+}
+
+#login-box h2 {
+    color: #000;
+    font-weight: bold;
+}
+
+#login-box button {
+    background-color: #6c63ff;
+}
+
+#login-box button:hover {
+    background-color: #ff9500;
+}
+
+#login-box .btn-success {
+    background-color: #192a6b;
+    border: none;
+    font-weight: bold;
+}
+
+#login-box .btn-success:hover {
+    background-color: #ff9500;
+}
+
+#login-box .btn-secondary {
+    background-color: #6c63ff;
+    border: none;
+}
+
+#login-box .btn-secondary:hover {
+    background-color: #ff9500;
 }
 /* GLASS EFECT */
 .glass {
