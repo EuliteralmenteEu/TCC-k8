@@ -1,17 +1,16 @@
-/* RESET */
+@import url('https://googleapis.com');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* FUNDO */
 body {
     background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Google Sans', sans-serif;
 }
 
-/* NAVBAR */
 .navbar {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
@@ -29,14 +28,12 @@ body {
     color: #ffd54f !important;
 }
 
-/* CENTRALIZAÇÃO */
 #elemento {
     display: flex;
     justify-content: center;
     padding: 40px 20px;
 }
 
-/* CARD */
 #card {
     width: 90%;
     max-width: 900px;
@@ -46,7 +43,6 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* TÍTULO */
 #titulo {
     text-align: center;
     margin-bottom: 20px;
@@ -54,14 +50,12 @@ body {
     color: #0d6efd;
 }
 
-/* BOTÃO */
 #acoes {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
 }
 
-/* TABELA */
 #tabela {
     border-radius: 10px;
     overflow: hidden;
@@ -81,7 +75,6 @@ body {
     transform: scale(1.01);
 }
 
-/* MODAL */
 .modal-content {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -96,7 +89,6 @@ body {
     font-weight: bold;
 }
 
-/* RESPONSIVO */
 @media (max-width: 768px) {
     #card {
         padding: 15px;
