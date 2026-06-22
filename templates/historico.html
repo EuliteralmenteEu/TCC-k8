@@ -4,25 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/style4.css">
 </head>
 <body>
-
 <nav id="navbar" class="navbar navbar-expand-lg navbar-custom fixed-top">
     <img src="../static/senai2.png" id="logo">
     <div class="container-fluid">
-
-
         <a class="navbar-brand ms-2 fw-bold" href="#">Almoxarifado</a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-
+        <div class="collapse navbar-collapse" id="navbarNav"></div>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Home</a>
@@ -37,12 +30,9 @@
         </div>
     </div>
 </nav>
-  
 <div id="elemento">
     <div id="card">
-        
         <h3 id="titulo">Histórico de Movimentações</h3>
-
         <table class="table table-striped table-hover" id="tabela">
             <thead>
                 <tr>
@@ -63,16 +53,15 @@
                     <td>{{ item.nome }}</td>
                     <td>{{ item.quantidade }}</td>
                     <td>{{ item.categoria }}</td>
-
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
