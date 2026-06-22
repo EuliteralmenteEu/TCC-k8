@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 import os
 import logging
+import bcrypt 
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
