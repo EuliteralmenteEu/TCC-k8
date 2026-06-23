@@ -1,13 +1,10 @@
 from flask import Flask, render_template, g
 import mysql.connector 
 from mysql.connector import Error
-import os
-import logging
 import bcrypt 
+import os
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 #----------SQL------------------
 DB_HOST = os.getenv('DB_HOST','localhost')
@@ -19,10 +16,10 @@ def get_db():
     """Abre uma conexão com o banco de dados se já não houver uma ativa na requisição."""
     if 'db' not in g:
         g.db = mysql.connector.connect(
-            host=localhost,
-            user=root,
-            password=,
-            database=almoxarifado
+         host=DB_HOST,
+         user=DB_USER,
+         password=DB_PASSWORD,
+         database=DB_DATABASE
         )
     return g.db
 
