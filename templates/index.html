@@ -41,22 +41,15 @@
                 <label>Senha:</label>
                 <input type="password" class="form-control" placeholder="Digite sua Senha" required>
             </div>
-            <div id="botao_usu_adm">
-                <input type="radio" class="btn-check" name="tipo" id="usuario" checked>
-                <label class="btn btn-secondary" for="usuario">Usuário</label>
-                <input type="radio" class="btn-check" name="tipo" id="admin">
-                <label class="btn btn-secondary" for="admin">Admin</label>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                <label class="form-check-label" for="switchCheckDefault">Admin</label>
             </div>
             <br>
-            <button onclick="window.location.href='/ABRAXAS.html'" type="submit" class="btn btn-primary w-100 mb-2">
+            <button onclick="window.location.href='/ABRAXAS'" type="submit" class="btn btn-primary w-100 mb-2">
                 Entrar
             </button>
-            <p style="text-align: center;">
-                <br>Não tem conta?
-            </p>
-            <button onclick="window.location.href='/cadastrar.html'" type="button" class="btn btn-success w-100">
-                Cadastrar-se
-            </button>
+
         </form>
     </div>
 </div>
