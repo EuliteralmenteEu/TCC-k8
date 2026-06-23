@@ -35,6 +35,18 @@ def close_db(e):
 def index():
     return render_template("Index.html")
 
+@app.route("/ABRAXAS")
+def ABRAXAS():
+    return render_template("ABRAXAS.html")
+
+@app.route("/cadastrar")
+def cadastrar():
+    return render_template("cadastrar.html")
+
+@app.route("/historico")
+def historico():
+    return render_template("historico.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)
