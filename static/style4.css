@@ -1,12 +1,9 @@
-@import url('https://googleapis.com');
-
 body {
-    background-color: #101B47;
     background-image: url("instituto_senai_de_tecnologia_mt_cover.png");
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    font-family: 'Google Sans', sans-serif;
+    font-family: OCR A Std, monospace
 }
 
 body::before {
@@ -20,16 +17,14 @@ body::before {
     z-index: -1;
 }
 
-#navba {
+#navbar {
     position: sticky;
     top: 0;
     z-index: 999;
-
-    background: #192a6b;
+    background: #072f4ed9;
     backdrop-filter: blur(10px);
 
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-
     padding-left: 80px;
     transition: 0.3s;
 }
@@ -41,7 +36,7 @@ body::before {
 }
 
 #navbar .nav-link {
-    color: white;
+    color: rgb(243, 243, 243);
     font-weight: 500;
     position: relative;
     transition: 0.3s;
@@ -54,7 +49,7 @@ body::before {
     bottom: -5px;
     width: 0%;
     height: 2px;
-    background: #00d4ff;
+    background: #a51a1a;
     transition: 0.3s;
 }
 
@@ -67,7 +62,7 @@ body::before {
 }
 
 #navbar .nav-link.active {
-    color: #00d4ff;
+    color: #ffffff;
 }
 
 /* container principal */
@@ -96,7 +91,7 @@ body::before {
 
 #tabela th {
     background: linear-gradient(90deg, #101B47, #35437A, #101B47);
-    color: white;
+    color: rgb(255, 255, 255);
     border-color: black;
     text-align: center;
 }
@@ -111,22 +106,15 @@ body::before {
 }
 
 #tabela tr:hover {
-    background-color: #dfe6ff;
+    background-color: #153cca;
     transform: scale(1.01);
+}
+#tituloEstoque{
+    color: #ff9501;
 }
 
 #titulo {
     color: #35437A;
     font-weight: bold;
     text-align: center;
-}
-
-#tituloEstoque {
-    color: #ffffff;
-}
-
-#almo{
-    position: relative;
-    bottom: -9px;
-    color:  #ffffff;
 }
