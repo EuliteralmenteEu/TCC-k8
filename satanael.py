@@ -40,7 +40,18 @@ def index():
 
 @app.route("/ABRAXAS")
 def ABRAXAS():
-    return render_template("ABRAXAS.html")
+    DB_HOST = os.getenv('DB_HOST', 'localhost') 
+    DB_USER = os.getenv('DB_USER', 'root') 
+    DB_PASSWORD = os.getenv('DB_PASSWORD', '') 
+    DB_DATABASE = os.getenv('DB_DATABASE', 'almoxarifado') 
+    
+    data = {
+        'host': DB_HOST,
+        'user': DB_USER,
+        'database': DB_DATABASE
+    }
+
+    return render_template("ABRAXAS.html", data=data)
 
 @app.route("/cadastrar")
 def cadastrar():
