@@ -5,7 +5,7 @@ body {
     background-repeat: no-repeat;
     font-family: OCR A Std, monospace
 }
-
+/*um subiten do body*/
 body::before {
     content: "";
     position: fixed;
@@ -23,7 +23,6 @@ body::before {
     z-index: 999;
     background: #072f4ed9;
     backdrop-filter: blur(10px);
-
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
     padding-left: 80px;
     transition: 0.3s;
@@ -35,6 +34,7 @@ body::before {
     color: white;
 }
 
+/*uma clasificação de um detalhe na navbar*/
 #navbar .nav-link {
     margin-left: 2px;
     color: rgb(243, 243, 243);
@@ -43,6 +43,8 @@ body::before {
     transition: 0.3s;
 }
 
+/*uma clasificação de um detalhe com subclase depois na navbar*/
+/*serve para os botões que mudam de cor*/
 #navbar .nav-link::after {
     content: "";
     position: absolute;
@@ -54,10 +56,11 @@ body::before {
     transition: 0.3s;
 }
 
+/*serve para os botões que mudam de cor*/
 #navbar .nav-link:hover {
     color: #8494D1;
 }
-
+/*serve para os botões que mudam de cor*/
 #navbar .nav-link:hover::after {
     width: 100%;
 }
@@ -65,24 +68,26 @@ body::before {
 #navbar .nav-link.active {
     color: #ffffff;
 }
+
 #nav-tudo {
     margin-left: 570px;
-
 }
 
 #elemento {
     max-width: 1000px;
     margin: 50px auto;
+
 }
 
 #card {
     padding: 25px;
     border-radius: 20px;
-    background: white;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 20px 60px #000000;
     transition: 0.3s;
 }
 
+/*serve para aumentar o tamanho da tabela quando passa o mouse*/
 #card:hover {
     transform: scale(1.01);
 }
@@ -94,7 +99,7 @@ body::before {
 
 #tabela th {
     background: linear-gradient(90deg, #101B47, #35437A, #101B47);
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     border-color: black;
     text-align: center;
 }
@@ -102,10 +107,12 @@ body::before {
 #tabela td {
     text-align: center;
     vertical-align: middle;
+    transform: scale(1.01);
 }
 
 #tabela tr {
     transition: 0.2s;
+    transform: scale(1.01);
 }
 
 #tabela tr:hover {
@@ -129,7 +136,7 @@ body::before {
     padding: 25px;
     border-radius: 20px;
     background: white;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0px 20px 60px #000000;
     transition: 0.3s;
     margin: 50px auto;
 }
