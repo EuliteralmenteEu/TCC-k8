@@ -1,8 +1,10 @@
+#---------IMPORTS DO BALACOBACO--------
 from flask import Flask, render_template, g
 import mysql.connector 
 from mysql.connector import Error
 import bcrypt 
 import os
+#---------FIM DOS IMPORTS---------
 
 app = Flask(__name__)
 
@@ -31,6 +33,7 @@ def close_db(e):
         db.close()
 #--------------FIM DO SQL--------------------
 
+#--------------ROTAS BACANAS---------------
 @app.route("/")
 def index():
     return render_template("Index.html")
@@ -51,6 +54,7 @@ def historico():
 def adicionar():
     return render_template("adicionar.html")
 
+#------------FIM DAS ROTAS BACANAS--------------
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)
