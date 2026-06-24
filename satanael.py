@@ -47,6 +47,10 @@ def cadastrar():
 def historico():
     return render_template("historico.html")
 
+@app.route("/adicionar")
+def adicionar():
+    return render_template("adicionar.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)
