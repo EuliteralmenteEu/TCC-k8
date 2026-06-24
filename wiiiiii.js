@@ -1,6 +1,6 @@
 document.getElementById('form-cadastro').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+    //-----------PEGANDO ELEMENTOS POR ID-------------
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -9,12 +9,15 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
     const successBox = document.getElementById('success-box');
     alertBox.classList.add('d-none');
     successBox.classList.add('d-none');
+    //----------FIM DOS IDS---------------------
     
+    //----------MENSAGENS DE ERRO/ACERTOS ETC-----------
     if (password !== confirmPassword) {
         alertBox.textContent = 'As senhas não coincidem.';
         alertBox.classList.remove('d-none');
         return;
     }
+
     
     try {
         const response = await fetch('/api/register', {
@@ -44,3 +47,4 @@ document.getElementById('form-cadastro').addEventListener('submit', async functi
         alertBox.classList.remove('d-none');
     }
 });
+//---------------FIM DAS MENSAGENS--------------
