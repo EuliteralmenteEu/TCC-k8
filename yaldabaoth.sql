@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS estoque (
     quantidade INT DEFAULT 0,
     categoria VARCHAR(50) NOT NULL,
     descricao VARCHAR(255),
-    preco float(6),
+    preco decimal(9, 2) NOT NULL,
     imagem Varchar(255) NOT NULL
 );
 
