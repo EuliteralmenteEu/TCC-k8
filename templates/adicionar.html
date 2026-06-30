@@ -22,48 +22,66 @@
             </button>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
-                    <li id="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/cadastrar">Cadastrar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/ABRAXAS">Estoque</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><img src="../static/account_circle.png" id="logo"></a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+<div class="caixa-fade">
 <div id="elemento">
-    <div id="Adicionar-item">
+    <div id="Adicionar-item" action="/submit" method="POST">
         <h3 id="titulo">Adicionar novo Item</h3>
             <form class="row g-3">
         <div class="col-12">
             <label for="inputAddress2" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="inputAddress2">
+            <input type="text" name="Nome" class="form-control" id="inputAddress2">
         </div>
         <div class="col-12">
             <label for="inputAddress2" class="form-label">Quantidade</label>
-            <input type="text" class="form-control" id="inputAddress2">
+            <input type="text" name="Quantidade" class="form-control" id="inputAddress2">
         </div>
         <div class="col-12">
             <label for="inputAddress2" class="form-label">Preço</label>
-            <input type="text" class="form-control" id="inputAddress2">
+            <input type="text" name="Preço" class="form-control" id="inputAddress2">
         </div>
         <div class="col-12">
             <label for="inputAddress2" class="form-label">Categoria</label>
-            <input type="text" class="form-control" id="inputAddress2">
+            <input type="text" name="Categoria" class="form-control" id="inputAddress2">
+        </div> 
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Descrição</label>
+            <input type="text" name="descricao" class="form-control" id="inputAddress2">
         </div>
         <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupFile01"></label>
+            <img src="../static/add_photo.png" id="add_a_photo">
             <input type="file" class="form-control" id="inputGroupFile01">
         </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Registrar adição</button>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
+            <label class="form-check-label" for="Adicionar Itens">
+                Adicionar Itens
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
+            <label class="form-check-label" for="Retirar Itens">
+                Retirar Itens
+            </label>
+            </div>
+        <div class="col-12" id="Regiscao">
+            <button type="submit" onclick="href='/ABRAXAS'" class="btn btn-primary">Registrar Mudança</button>
         </div>
     </div>
+</div>
 </div>
 </form>
 </body>
