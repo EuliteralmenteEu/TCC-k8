@@ -1,16 +1,17 @@
+#---------IMPORTS DO BALACOBACO--------
 from flask import Flask, render_template, g
 import mysql.connector 
-from mysql.connector import Error
 import bcrypt 
-import os
+
+#---------FIM DOS IMPORTS---------
 
 app = Flask(__name__)
 
 #----------SQL------------------
-DB_HOST = os.getenv('DB_HOST','localhost')
-DB_USER = os.getenv('DB_USER','root')
-DB_PASSWORD = os.getenv('DB_PASSWORD','')
-DB_DATABASE = os.getenv('DB_DATABASE','almoxarifado')
+DB_HOST = 'localhost'
+DB_USER = 'root'
+DB_PASSWORD = ''
+DB_DATABASE = 'almoxarifado'
 
 def get_db():
     """Abre uma conexão com o banco de dados se já não houver uma ativa na requisição."""
@@ -31,13 +32,19 @@ def close_db(e):
         db.close()
 #--------------FIM DO SQL--------------------
 
+#--------------ROTAS BACANAS---------------
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("Index.html")
 
 @app.route("/ABRAXAS")
 def ABRAXAS():
-    data = "te"
+    data = {
+        'host': DB_HOST,
+        'user': DB_USER,
+        'database': DB_DATABASE
+    }
+
     return render_template("ABRAXAS.html", data=data)
 
 @app.route("/cadastrar")
@@ -46,15 +53,21 @@ def cadastrar():
 
 @app.route("/historico")
 def historico():
-    return render_template("historico.html")
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM historico")
+    registros = cursor.fetchall()
+
+    cursor.close()
+
+    return render_template("historico.html", registros=registros)
 
 @app.route("/adicionar")
 def adicionar():
     return render_template("adicionar.html")
 
-@app.route("/back.html")
-def back():
-    return render_template("back.html")
+#------------FIM DAS ROTAS BACANAS--------------
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)
