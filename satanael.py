@@ -66,7 +66,14 @@ def historico():
 @app.route("/adicionar")
 def adicionar():
     return render_template("adicionar.html")
-
+def handle_data():
+    nome = request.form.get('Nome')
+    quantidade = request.form.get('Quantidade')
+    preco = request.form.get('Preco')
+    categoria = request.form.get('Categoria')
+    descricao = request.form.get('descricao')
+    print(f"{nome}, {quantidade}, {preco}, {categoria}, {descricao}")
+    
 #------------FIM DAS ROTAS BACANAS--------------
 
 if __name__ == "__main__":
