@@ -1,9 +1,11 @@
 import bcrypt
 
-senha_plana = "minha_senha_secreta"
+senha_plana = request.form.get('password')
 
 bytes_senha = senha_plana.encode('utf-8')
 bytes_hash = bcrypt.hashpw(bytes_senha, bcrypt.gensalt())
+
+password_hash = bytes_hash.decode('utf-8')
 
 print("Hash gerado:", bytes_hash.decode('utf-8'))
 
