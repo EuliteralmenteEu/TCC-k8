@@ -69,7 +69,7 @@ def handle_data():
     quantidade = request.form.get('Quantidade')
     preco = request.form.get('Preco')
     categoria = request.form.get('Categoria')
-    descricao = request.form.get('descricao')
+    descricao = request.form.get('Descricao')
     print(f"{nome}, {quantidade}, {preco}, {categoria}, {descricao}")
     return render_template("adicionar.html")    
 #------------FIM DAS ROTAS BACANAS--------------
