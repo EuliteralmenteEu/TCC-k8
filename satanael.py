@@ -64,15 +64,28 @@ def historico():
 
     return render_template("historico.html", registros=registros)
 
-@app.route("/adicionar")
+@app.route("/adicionar", methods=["GET", "POST"])
 def adicionar():
-        return render_template("adicionar.html") 
-def handle_data():
-    nome = request.form.get('Nome')
-    quantidade = request.form.get('Quantidade')
-    preco = request.form.get('Preco')
-    categoria = request.form.get('Categoria')
-    descricao = request.form.get('Descricao')
+    if request.method == "POST":
+        nome = request.form.get("Nome")
+        quantidade = request.form.get("Quantidade")
+        preco = request.form.get("Preco")
+        categoria = request.form.get("Categoria")
+        descricao = request.form.get("Descricao")
+
+        db = get_db()
+        cursor = db.cursor()
+
+        sql = """
+        INSERT INTO produtos (nome, quantidade, preco, categoria, descricao)
+        VALUES (%s, %s, %s, %s, %s)
+        """
+
+        cursor.execute(sql, (nome, quantidade, preco, categoria, descricao))
+        db.commit()
+        cursor.close()
+
+    return render_template("adicionar.html")
 
 #------------FIM DAS ROTAS BACANAS--------------
 
