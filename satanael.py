@@ -57,7 +57,7 @@ def historico():
     db = get_db()
     cursor = db.cursor(dictionary=True)
 
-    cursor.execute("SELECT * FROM historico")
+    cursor.execute("SELECT * FROM estoque")
     registros = cursor.fetchall()
 
     cursor.close()
@@ -72,12 +72,13 @@ def adicionar():
         preco = request.form.get("Preco")
         categoria = request.form.get("Categoria")
         descricao = request.form.get("Descricao")
+    
 
         db = get_db()
         cursor = db.cursor()
 
         sql = """
-        INSERT INTO produtos (nome, quantidade, preco, categoria, descricao)
+        INSERT INTO estoque (nome, quantidade, preco, categoria, descricao)
         VALUES (%s, %s, %s, %s, %s)
         """
 
