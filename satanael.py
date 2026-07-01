@@ -2,6 +2,7 @@
 from flask import Flask, render_template, g
 import mysql.connector 
 import bcrypt 
+from flask import request
 
 #---------FIM DOS IMPORTS---------
 
@@ -35,7 +36,7 @@ def close_db(e):
 #--------------ROTAS BACANAS---------------
 @app.route("/")
 def index():
-    return render_template("Index.html")
+    return render_template("index.html")
 
 @app.route("/ABRAXAS")
 def ABRAXAS():
@@ -64,14 +65,15 @@ def historico():
     return render_template("historico.html", registros=registros)
 
 @app.route("/adicionar")
+def adicionar():
+        return render_template("adicionar.html") 
 def handle_data():
     nome = request.form.get('Nome')
     quantidade = request.form.get('Quantidade')
     preco = request.form.get('Preco')
     categoria = request.form.get('Categoria')
     descricao = request.form.get('Descricao')
-    print(f"{nome}, {quantidade}, {preco}, {categoria}, {descricao}")
-    return render_template("adicionar.html")    
+
 #------------FIM DAS ROTAS BACANAS--------------
 
 if __name__ == "__main__":
