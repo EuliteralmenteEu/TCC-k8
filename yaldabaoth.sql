@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS estoque (
     preco decimal(9, 2) NOT NULL,
     imagem Varchar(255) NOT NULL
 );
-INSERT INTO usuarios (email, nome, senha, permisao) 
+
